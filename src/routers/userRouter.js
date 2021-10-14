@@ -2,7 +2,8 @@ import express from "express";
 
 const Router = express.Router()
 import { createUser } from "../models/User.models.js";
-import {createAdminUserValidation  } from "../middlewares/formValidation.middleware.js";
+import { createAdminUserValidation } from "../middlewares/formValidation.middleware.js";
+import {hashPassword  } from "../helpers/bcrypt.helper.js";
 
 Router.all("/", (req, res, next) => {
 
@@ -16,8 +17,16 @@ Router.all("/", (req, res, next) => {
 Router.post("/", createAdminUserValidation, async (req, res) => {
     try {
         // server side validation should be done at first before any data insertion  
+        // createAdminUserValidation
+        
         
         // encrypt password
+        const hashPass = hashPassword(req.body.password)
+       
+        if (hashPass) {
+            
+            req.body.password = hashPass
+
         const result = await createUser(req.body)
 
         if (result?._id) {
@@ -31,7 +40,7 @@ Router.post("/", createAdminUserValidation, async (req, res) => {
             status: "error",
             message: "Unable to create new user  "
         })
-
+    }
 
     } catch (error) {
         let msg = "Error, Unable to create new user" 
