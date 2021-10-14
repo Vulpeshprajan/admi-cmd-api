@@ -3,3 +3,23 @@
 
 ### root api
 GET http://localhost:8000/
+
+
+### Create new user
+POST http://localhost:8000/api/v1/user
+Content-Type: application/json
+
+{
+    "fname": "Sagar",
+    "lname": "Pyakurel",
+    "email": "sdasdas@gmail.com",
+    "password": "Sagardasdasd",
+    "phone": "123456",
+    "address": "Sydney, NSW",
+    "gender" : "male"
+
+  
+
+}
+
+
