@@ -29,36 +29,81 @@ const send = async (infoObj) => {
   
 
 
-export const emailProcessor = ({
-    fname,
-    email,
-    pin
+ const emailProcessor = ({
+ 
+  email,
+  text,
+  html,
+  subject
 }) => {
     
-    const link = `http://localhost:3000/email-verification?pin=${pin}&email=${email}`
+  
     let info = ({
-        from: `"EShop 👻" < ${process.env.EMAIL_USER}>`, // sender address
-        to: email , // list of receivers
-        subject: "Email confirmation required", // Subject line
-        text: `Hi ${fname} please follow the link below to confirm your email. ${link}`, // plain text body
-        html: 
-            `
-        Hello there,
-        <br/>
-
-        Please follow the link below to confirm your email <br/><br/>
-
-        ${link}
-
-        <br/><br/>
-        Thank you <br/><br/>
-
-        Kind Regards
-        -----Company info ---
-            `
-        
-        , // html body
+        from: `"EShop 👻" < ${process.env.EMAIL_USER}>`, 
+        to: email , 
+        subject,
+        text, 
+        html,
+            
+     
       });
 
     send(info)
+}
+
+export const sendEmailVerificationLink = (emailObj) => {
+  const { fname, pin, email } = emailObj
+  
+  const link = `http://localhost:3000/email-verification?pin=${pin}&email=${email}`
+  const obj = {
+    ...emailObj,
+    subject: "Email confirmation required",
+    text: `Hi ${fname} please follow the link below to confirm your email. ${link}`,
+    html: `
+    Hello there,
+    <br/>
+
+    Please follow the link below to confirm your email <br/><br/>
+
+    ${link}
+
+    <br/><br/>
+    Thank you <br/><br/>
+
+    Kind Regards,
+    -----Company info ---
+        `
+
+  }
+
+  emailProcessor(obj)
+}
+
+
+
+export const sendEmailVerificationConfirmation= emailObj => {
+  const { fname } = emailObj
+  
+  const obj = {
+    ...emailObj,
+    subject: "Email confirmation required",
+    text: `Hi ${fname} Your email has been verified you may login now !`,
+    html: `
+    Hello ${fname},
+    <br/>
+
+    Your email has been verified you may login now  <br/><br/>
+
+   
+
+    <br/><br/>
+    Thank you <br/><br/>
+
+    Kind Regards,
+    -----Company info ---
+        `
+
+  }
+
+  emailProcessor(obj)
 }

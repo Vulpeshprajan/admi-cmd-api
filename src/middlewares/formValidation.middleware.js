@@ -34,3 +34,33 @@ export const createAdminUserValidation = (req, res, next) => {
     next();
 
 }
+
+
+export const adminEmailVerificationValidation = (req, res, next) => {
+
+
+    const schema = Joi.object({
+     
+        email: Joi.string().max(50).email({ minDomainSegments: 2} ).required(),
+        pin: Joi.string().min(6).required(),
+     
+})
+
+    
+    const value = schema.validate(req.body)
+    
+
+    if (value.error) {
+        return res.json({
+            status: "Error",
+            message: value.error.message,
+
+        })
+
+    }
+
+    next();
+
+
+
+}

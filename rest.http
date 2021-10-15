@@ -12,7 +12,7 @@ Content-Type: application/json
 {
     "fname": "Sagar",
     "lname": "Pyakurel",
-    "email": "a@gmail.com",
+    "email": "sagar@gmail.com",
     "password": "Sagardasdasd",
     "phone": "123456",
     "address": "Sydney, NSW",
@@ -23,3 +23,13 @@ Content-Type: application/json
 }
 
 
+
+
+### verify admin email
+PATCH  http://localhost:8000/api/v1/user/email-verification
+Content-Type: application/json
+
+{
+    "pin": "153165",
+    "email": "sagar@gmail.com"
+}

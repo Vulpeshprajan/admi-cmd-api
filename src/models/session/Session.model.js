@@ -29,3 +29,29 @@ try {
 }
 
 }
+
+
+export const findAdminEmailVerification =async(filterObj) =>  {
+try {
+    const result = await SessionSchema.findOne(filterObj);
+    console.log(result, "from find session model")
+    return result
+
+} catch (error) {
+    throw new Error(error);
+    
+}
+
+
+}
+
+
+export const deleteInfo = async (filterObj) => {
+    try {
+        const result =  await SessionSchema.findOneAndDelete(filterObj)
+        return result;
+    } catch (error) {
+        throw new Error(error)
+    }
+
+}
