@@ -65,7 +65,7 @@ export const sendEmailVerificationLink = (emailObj) => {
 
     Please follow the link below to confirm your email <br/><br/>
 
-    ${link}
+    <a href = "${link}" target="_blank"> ${link} </a>
 
     <br/><br/>
     Thank you <br/><br/>
