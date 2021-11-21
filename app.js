@@ -25,9 +25,10 @@ app.use(express.json());
 
 // load routers
 import userRouter from "./src/routers/userRouter.js";
-
+import categoryRouter from "./src/routers/catalogRouter.js";
 // use routers
 app.use("/api/v1/user", userRouter)
+app.use("/api/v1/catalog", categoryRouter)
 
 
 

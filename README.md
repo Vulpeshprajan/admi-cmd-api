@@ -16,3 +16,14 @@ All the api endpoint will be followed by `${rootUrl}/api/v1/user`
 | 2.  | `/` | POST   | Create new user in database |
 | 3.  | `/` | PATCH  |                             |
 | 4.  | `/` | DELETE |                             |
+
+### Catalog API endpoint
+
+All the api endpoint will be followed by `${rootUrl}/api/v1/catalog`
+
+| #   | API      | METHOD | DESCRIPTION                                                                  |
+| --- | -------- | ------ | ---------------------------------------------------------------------------- |
+| 1.  | `/:_id?` | GET    | Get single Category if \_id is provided, otherwise return all the categories |
+| 2.  | `/`      | POST   | Create new Catalogs in database                                              |
+| 3.  | `/`      | PATCH  | Update Catalogs in database                                                  |
+| 4.  | `/`      | DELETE | Delete catalogs in database                                                  |

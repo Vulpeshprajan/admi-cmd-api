@@ -33,3 +33,36 @@ Content-Type: application/json
     "pin": "153165",
     "email": "sagar@gmail.com"
 }
+
+
+
+
+#Catalog router
+### Get all or single category
+GET http://localhost:8000/api/v1/catalog/
+
+
+
+### Create new category 
+POST http://localhost:8000/api/v1/catalog 
+Content-Type: application/json
+
+{
+    "name": "Monitors ",
+  "parentCat" :"6199a67e4fc1e897c79894d1" 
+}
+
+
+### Delete Category 
+DELETE http://localhost:8000/api/v1/catalog/6199c6ef10f2fb9390430a29
+
+
+### update category 
+PATCH  http://localhost:8000/api/v1/catalog 
+Content-Type: application/json
+
+{
+    "_id" : "6199c653509d07979ada8362",
+    "name": "sagar",
+  "parentCat" : null 
+}
